@@ -1,12 +1,14 @@
-public abstract class Animal {
-    private int id;
-    private String type;
+public abstract class Animal implements ProductProducer {
+    private final int id;
+    private final String type;
     public Animal(int id, String type) {
         this.id = id;
         this.type = type;
     }
-    public int getId() {return id;}
-    public String getType() { return type;}
-    // Каждый вид животного самостоятельно производит продукцию
-    public abstract int collectProduct();
+    public int getId() {
+        return id;
+    }
+    public String getType() {
+        return type;
+    }
 }
