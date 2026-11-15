@@ -10,9 +10,14 @@ public class Farm {
     private int nextId = 1;
     // Добавление животного с автоматическим ID
     public Animal addAnimal(IntFunction<? extends Animal> creator) {
-        Animal animal = creator.apply(nextId++);
+        if (creator == null) {
+            throw new IllegalArgumentException("Создатель животного не может быть null"); }
+        Animal animal = creator.apply(nextId);
+        if (animal == null) {
+            throw new IllegalArgumentException("Нельзя добавить пустое животное"); }
         animals.add(animal);
-        System.out.println(animal.getType() + " добавлена на ферму. ID: " + animal.getId());
+        nextId++;
+        System.out.println( animal.getType() + " добавлена на ферму. ID: " + animal.getId());
         return animal;
     }
     // Подсчёт количества животных
