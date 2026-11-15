@@ -1,9 +1,13 @@
 import java.util.Random;
 
 public class Chicken extends Animal {
-    private Random random = new Random();
+    private final Random random = new Random();
     public Chicken(int id) {
         super(id, "Курица");
+    }
+    @Override
+    public String getProductName() {
+        return "Яйца (штук)";
     }
     @Override
     public int collectProduct() {
